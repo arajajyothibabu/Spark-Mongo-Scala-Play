@@ -11,7 +11,7 @@ import com.mongodb.spark.config.WriteConfig
 private[utils] trait MongoWithSparkContext {
 
   def getSparkContext(args: Array[String]): SparkContext = {
-    val uri: String = args.headOption.getOrElse("mongodb://localhost/jyothi.users") //DB: jyothi, collection: users
+    val uri: String = args.headOption.getOrElse("mongodb://localhost/jyothi.companies") //DB: jyothi, collection: companies
     val conf = new SparkConf()
       .setMaster("local[*]")
       .setAppName("SparkMongoScalaPlay")
@@ -20,7 +20,7 @@ private[utils] trait MongoWithSparkContext {
       .set("spark.mongodb.output.uri", uri)
 
     val sc = new SparkContext(conf)
-    MongoConnector(sc).withDatabaseDo(WriteConfig(sc), {db => db.drop()})
+    MongoConnector(sc).withDatabaseDo(WriteConfig(sc), {db => /*db.drop()//drops the entire db*/})
     sc
   }
 
