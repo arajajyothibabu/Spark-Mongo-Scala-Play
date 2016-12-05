@@ -9,14 +9,14 @@ scalaVersion := "2.11.7"
 val sparkVersion = "1.6.2"
 
 libraryDependencies ++= Seq(
-  jdbc ,
-  cache ,
-  ws   ,
   "org.apache.spark" %% "spark-core" % sparkVersion,
   "org.apache.spark" %% "spark-sql" % sparkVersion,
   "org.apache.spark" %% "spark-streaming" % sparkVersion,
-  "org.mongodb.spark" % "mongo-spark-connector_2.11" % "2.0.0",
-  specs2 % Test
+  "org.mongodb.spark" % "mongo-spark-connector_2.11" % "1.1.0"
+)
+
+dependencyOverrides ++= Set(
+  "com.fasterxml.jackson.core" % "jackson-databind" % "2.4.4"
 )
 
 unmanagedResourceDirectories in Test <+=  baseDirectory ( _ /"target/web/public/test" )  
