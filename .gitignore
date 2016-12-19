@@ -1,8 +1,7 @@
 logs
-project/
+project/project
 target
 tmp
-.history
 dist
 /.idea
 /*.iml
